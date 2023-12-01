@@ -2,7 +2,8 @@
 
 Pre-requisite:
 
-Install Katalon Studio Clone this repo
+Install Katalon Studio 
+Clone this repo
 
 Run the test:
 
