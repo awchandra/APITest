@@ -8,6 +8,26 @@
 	"item": [
 		{
 			"name": "Get Activities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Activity are exist\", () => {\r",
+							"    let jsonData = pm.response.json()\r",
+							"    pm.expect(jsonData).to.be.an(\"array\");\r",
+							"    pm.expect(jsonData[0].id).to.be.an(\"number\");\r",
+							"    pm.expect(jsonData[0].title).to.be.eq('Activity 1');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -30,6 +50,25 @@
 		},
 		{
 			"name": "Post Activities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Activity is exist\", () => {\r",
+							"    let jsonData = pm.response.json()\r",
+							"    pm.expect(jsonData.id).to.be.an(\"number\");\r",
+							"    pm.expect(jsonData.title).to.be.eq('string');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -62,6 +101,25 @@
 		},
 		{
 			"name": "Get Unique Activity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Activity is exist\", () => {\r",
+							"    let jsonData = pm.response.json()\r",
+							"    pm.expect(jsonData.id).to.be.an(\"number\");\r",
+							"    pm.expect(jsonData.title).to.be.eq('Activity 10');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -85,6 +143,25 @@
 		},
 		{
 			"name": "Put Activity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Activity is exist\", () => {\r",
+							"    let jsonData = pm.response.json()\r",
+							"    pm.expect(jsonData.id).to.be.an(\"number\");\r",
+							"    pm.expect(jsonData.title).to.be.eq('Activity 100');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -118,6 +195,19 @@
 		},
 		{
 			"name": "Delete Activity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -134,6 +224,42 @@
 						"v1",
 						"Activities",
 						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Activity Negative Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fakerestapi.azurewebsites.net/api/v1/Activities/-1",
+					"protocol": "https",
+					"host": [
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Activities",
+						"-1"
 					]
 				}
 			},
